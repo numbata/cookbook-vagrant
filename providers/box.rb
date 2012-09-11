@@ -21,4 +21,5 @@ action :install do
     command "vagrant box add #{new_resource.name} #{node['vagrant_boxes']['path']}/vagrant_#{new_resource.name}.box"
     not_if "vagrant box list | grep -qE '^#{new_resource.name}$'"
   end
+
 end

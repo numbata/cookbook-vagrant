@@ -1,5 +1,5 @@
 Vagrant::Config.run do |config|
-  <% @boxes.each do |box| -%>
+  <% @boxes.each_with_index do |box, idx| -%>
   config.vm.define :<%= box["name"] %> do |box_config|
     box_config.vm.box = "<%= box["name"] %>"
     box_config.vm.host_name = "<%= box['name'] %>"
@@ -13,6 +13,9 @@ Vagrant::Config.run do |config|
       <% box['forward_port'].each_pair do |src, dst| -%>
       box_config.vm.forward_port <%= src %>, <%= dst %>
       <% end %>
+    <% end %>
+    <% if box.has_key?('public_ip') -%>
+        box_config.vm.network :hostonly, "192.168.5.<%= idx + 10 %>"
     <% end %>
   end
   <% end %>
