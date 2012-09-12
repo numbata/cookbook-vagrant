@@ -7,7 +7,7 @@ gem_package "vagrant" do
   action :install
 end
 
-directory "#{node['vagrant_boxes']['path']}" do
+directory node['vagrant_boxes']['path'] do
   owner "root"
   group "root"
   mode "0755"
@@ -15,7 +15,7 @@ directory "#{node['vagrant_boxes']['path']}" do
 end
 
 remote_file "#{Chef::Config[:file_cache_path]}/#{vagrant_lucid_image}" do
-  source "#{node['vagrant_boxes']['image_url']}"
+  source node['vagrant_boxes']['image_url']
   mode 06444
   action :create_if_missing
 end
@@ -23,7 +23,7 @@ end
 need_iptables = false
 
 node['vagrant_boxes']['boxes'].each do |box|
-  vagrant_boxes_box "#{box['name']}" do
+  vagrant_boxes_box box['name'] do
     action :install
     provider "vagrant_boxes_box"
   end
