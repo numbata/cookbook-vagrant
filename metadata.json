@@ -1,0 +1,32 @@
+{
+  "name": "vagrant_boxes",
+  "description": "Setup vagrant boxes",
+  "long_description": "",
+  "maintainer": "Andrey Subbota",
+  "maintainer_email": "subbota@gmail.com",
+  "license": "Apache 2.0",
+  "platforms": {
+  },
+  "dependencies": {
+    "build-essential": ">= 0.0.0",
+    "iptables": ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "vagrant_boxes::default": "Setup vagrant boxes"
+  },
+  "version": "0.0.4"
+}
